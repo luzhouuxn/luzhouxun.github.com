@@ -1,0 +1,672 @@
+isalnum():检测所有字符都是字母(汉字也可以)或数字则返回 True,否则返回 False。空格也不行
+isalpha():检测字符串是否只由字母(汉字也可以)组成
+isdigit():检测字符串是否只由数字组成
+isidentifier()：用于判断字符串是否是有效的 Python 标识符，可用来判断变量名是否合法
+islower():判断全是小写
+isspace():判断是否全是空格
+istitle():判断是否是标题（每个单词首字母都是大写）
+str.title()：把字符串str转换为标题（每个单词首字母都是大写）
+pycharm快速注释：选中要注释的，再按ctrl+/
+
+test = "你是风儿我是沙"
+t = " "
+v=t.join(test)
+print(v)   #你 是 风 儿 我 是 沙  （在test字符串中间插入t的内容）
+
+test = "test"
+v = test.ljust(10,'*')    # v = test.rjust(10,'*') 是把test字符串放到右边
+print(v)	#   test******
+
+str = "wuxuedong"
+v = str.center(20,"*")
+print(v)  #   *****wuxuedong******  
+
+lower(): 转化字符串为小写
+upper()：将字符串中的小写字母转为大写字母。
+
+test = " test "
+v = test.lstrip() #去除左边的空格（换行等等空白也可以）
+v = test.rstrip() #去除左边的空格（换行等等空白也可以）
+v = test.strip() #去除两边的空格（换行等等空白也可以）
+
+testString="123458967"
+print (testString.rstrip('7967'))  # 12345 testString从右边开始找，123458967最右边首先为7，在7967中有7，再看67，也有，967，也有，8967没有，所以删掉967变成123458，变成右边第一个为8，没有，直接返回123458。
+print (testString.lstrip('7967'))  #从左边开始找
+print (testString.strip('7967'))   #左右两边分别找
+
+str = "hello,world"
+test = str.split(",")
+print(test)   # 输出为['hello', 'world']
+
+v = "abcdefghijklmn"
+m = str.maketrans("ace","123")    #m是让ace与123形成对应关系
+new_v = v.translate(m)				#把v通过m的对应关系进行translate
+print(new_v)   #1b2d3fghijklmn   把ace与123对应，把a换成1，c换成2，e换成3。
+
+
+partition() 方法用来根据指定的分隔符将字符串进行分割。如果字符串包含指定的分隔符，则返回一个3元的元组，第一个为分隔符左边的子串，第二个为分隔符本身，第三个为分隔符右边的子串。（只识别左边开始第一个分隔符）
+rpartition() 方法类似于 partition() 方法，只是该方法是从目标字符串的末尾也就是右边开始搜索分割符。。如果字符串包含指定的分隔符，则返回一个3元的元组，第一个为分隔符左边的子串，第二个为分隔符本身，第三个为分隔符右边的子串。
+split() 通过指定分隔符对字符串进行切片，如果参数 num 有指定值，则分隔 num+1 个子字符串。（每个分隔符都识别）
+splitlines() 按'\n'分割，splitlines(True)保留换行符，False不保留
+
+test.startwith('a') 用于检查字符串是否是以指定子字符串开头，如果是则返回 True，否则返回 False。如果参数 beg 和 end 指定值，则在指定范围内检查。
+test.endwith('a') 以a结尾返回True，否则False
+
+swapcase() 方法用于对字符串的大小写字母进行转换，字符串中的大写改为小写，小写改为大写。
+
+find() 方法检测字符串中是否包含子字符串 str ，如果指定 beg（开始） 和 end（结束） 范围，则检查是否包含在指定范围内，如果包含子字符串返回开始的索引值，否则返回-1
+test = "test"
+v = test.replace("t","*")   把test中的t全部替换为*
+
+##############记住6个基本魔法：##############
+join  split  find  strip  upper  lower  replace
+##############4个灰魔法##############
+test = "灰魔法"    
+v = test[0]="灰" 可直接获取字符串中某个字符
+v = test[0:2]	（切片）取区间范围，取左不取右，取0,1不取2
+v = len(test)	获取字符串长度，python3认为"test"为3，python2.7认为为9，因为utf-8的一个汉字占3个字节
+如果是计算列表，则len是取列表的长度，即列表元素的个数
+
+test = "灰魔法"
+for i in test:
+	print i		#依次输出每个字符
+
+两个字符串的拼接，生成3块内存，有一块是拼接的结果。如果要向字符串插入某个位置插入某个元素，后面的元素都需要往后移动一位，浪费时间，所以，字符串不能修改。
+
+break：结束整个循环
+continue：跳过本次循环
+
+v = range(100) #python2中直接创建一个列表，值为0到99。python3中只有在一个个循环，例如for in v时才开始创建内存。
+v = range(0,100,5) 创建0到99共100个值的列表，步长为5，即0,5,10,15....
+
+test = "abcd"
+目的：输出test每个字符的索引
+r = range(0,len(test))
+for item in r:
+	print(item,test[item])
+依次输出 
+0 a 
+1 b
+2 c
+3 d
+
+
+
+
+
+
+
+###################列表、元组、字典#################
+
+列表：
+li = [1,19,"age","am"]  列表中的元素可以是数字，字符串。
+li = [1,2,[3,4],5]	列表可以嵌套列表，可以无限嵌套
+print(li[0])	索引取值
+print(li[2:-1])	切片取值
+for item in li:
+	print item	列表可循环取值
+	
+li[0] = 5  列表可修改。（字符串不能修改）列表中的元素是存储的地址，是链表存储，所以列表元素可以修改。字符串是连续地址存储的，所以不能修改。
+del li[1]	删除列表元素
+
+del li[1,3]	也支持切片删除多个元素
+li[1:3] = [12,13]	列表支持切片方式一次修改多个元素
+
+li = [12,13,[14,15]]
+v = 12 in li 	判断12是否在li列表中，在则返回True，否则False
+print(v)		True。 （支持in操作）
+v = 14 in li
+print(v)		False。[14,15]这个整体才在列表li中，所以False。
+
+li = [12,13,["14",15]]
+v = li[2][0]	# v = 14
+v = li[2][0][0]	# v = 1  ,取的14的第一个元素，因为“14”是字符串。可以用这种方式一直往里找
+
+前面括号加上类名，就是把变量转化为哪种类型
+a = "123"
+v = int(a)	# v = 123(字符串转整形)
+
+a = 123
+v = str(a)	# v = "123"（整形转字符串）
+m = v[0]	# m = 1 ,取字符串“123”第一个元素
+
+a = "abcdefg"
+li = list(a)
+print (li)	# ['a', 'b', 'c', 'd', 'e', 'f', 'g'] 转换为列表
+字符串可以单独取每个元素a[0],a[1],可以for循环，所以字符串可以转换为列表。内部是for循环处理的。
+a = 12 这样的a为数字，不能取每个元素遍历，所以不能把数字转化为列表
+
+a = [11,22,"abcdefg"]
+li = str(a)		#把列表转字符串，这样转化为的字符串为“[11,22,"abcdefg"]”，把整个列表包括[]都直接拿过来当成字符串
+print(li[0])	# 输出  [
+print(li[1])	#输出	1
+
+#列表中既有数字，又有字符串，需要自己写for循环遍历列表拼接为字符串
+li = [11,22,"abcdefg"]
+s = ""
+for i in li:
+    s = s + str(i)	#数字和字符串不能用+拼接，需要转化为字符串再拼接
+print(s)	# 1122abcdefg
+#如果li = [[11,22],"abcdefg"] ，s 为[11, 22]abcdefg。因为那个整体是一个元素
+
+#列表中每个元素都是字符串，用join方式转化列表为字符串
+li = ["123","abcdefg"]
+s = "".join(li)	# 把“”插入列表，返回一个字符串。内部也是for循环遍历列表的每个元素
+print(s)		# 123abcdefg 
+
+str，list，都是字符串类型，变量命名不能命名为str和list，否则会出错
+
+li = []
+li.append(2)	#li =[2]
+
+li = []
+li.append([1,2])	#追加一个列表
+print(li)			#[[1, 2]]
+
+li.clear()		清空列表
+
+拷贝,浅拷贝
+v = li.copy()
+print(v)	#v等于li列表
+
+计算元素在列表中出现次数
+v = li.count(22)
+
+extend是把元素追加到列表后面，如果extend传入参数[55,"66"]，是依次把这个列表的元素取出来追加到li列表中
+li = [11,22,33,44]
+li.extend([55,"hello"])
+print(li)	# [11, 22, 33, 44, 55, 'hello']
+
+li = [11,22,33,44]
+li.extend(“hello”)
+print(li)	# [11, 22, 33, 44, 55, 'hello']
+
+li = [11,22,33,44]
+li.extend("hello") #extend是把传入的参数拆分为一个个元素添加到li后面
+print(li)	#[11, 22, 33, 44, 'h', 'e', 'l', 'l', 'o']
+
+li = [11,22,33,44]
+li.extend([11,"22",[33,"44"]])
+print(li)	# [11, 22, 33, 44, 11, '22', [33, '44']]
+
+
+append是直接把参数[55,"66"]当成一个元素追加到li列表中。不像extend那样拆开添加进去
+li = [11,22,33,44]
+li.append([55,"hello"])
+print(li)	# [11, 22, 33, 44, [55, 'hello']]
+
+li = [11,22,33,44]
+li.append("hello")
+print(li)	#[11, 22, 33, 44, 'hello']
+
+li = [11,22,33,44]
+li.append([11,"22",[33,"44"]])
+print(li)	#[11, 22, 33, 44, [11, '22', [33, '44']]]
+
+extend参数可迭代（可以像字符串那样拆分为一个个元素），因为extend是把可迭代的参数一个个元素拆开for循环追加到li后面
+
+li = [11,22,33,22]
+v = li.index(22)	#查找22的索引，找到第一个就不找了
+
+li = [11,22,33,22]
+li.insert(0,99)		#列表索引0的位置插入元素99
+
+li = [11,22,33,22]
+v = li.pop()	#默认删除最后一个元素，并获取被删除的值
+v = li.pop(1)	#删除指定索引的值
+
+li.remove(22)	#删除列表中指定值，只删除左边开始找的第一个
+
+删除列表元素的方法有：（支持切片方式）
+li.pop  li.remove  del clear
+
+li.reverse()	#当前列表反转
+
+li.sort()	#从小到大排序
+li.sort(reverse=True)	#从大到小排序
+
+以上称作list类中提供的方法
+对象.方法(..)	#某某对象调用某某方法
+
+test = "abcdabcd"
+v = test.replace("a","b")	#把test字符串中的a全部换成b
+print(test)		#abcdabcd	#字符串不可修改，test本身没有变，修改后的字符串是返回值传出来
+print(v)		#bbcdbbcd
+
+
+元组：
+列表是有序的，元素可以被修改
+元组也是有序的，但不可被修改，不可被增加和删除
+元组是列表的二次加工
+
+列表list： li = [1,2,3,4]
+元组tuple： tu = (1,2,3,4)
+一般写元组的时候，推荐在最后加入逗号“，”，意思没变，长度等等都没影响
+
+v = tu[0]	能取索引
+v = tu[1:3]	能切片
+
+元组可循环取每个元素的值，所以元组也是可迭代对象
+for item in tu:
+	print(item)	
+
+s = "abcdefg"
+li = ["abcd",123]
+tu = (123,123,"abc")
+
+v = tuple(s)	#列表转元组
+print(v)	#('a', 'b', 'c', 'd', 'e', 'f', 'g')
+
+v = list(tu)	#元组转列表
+print(v)	#[123, 123, 'abc']
+
+如果元组的元素都是字符串，可以像列表那样用join方法转换为字符串
+tu = ("ab","cd")
+v = "".join(tu)
+print (v)	#abcd
+
+tu = ("ab",("cd","ef"))
+v = "".join(tu)	
+print (v)	#报错，元组中嵌套元组，不能用join方法转换为字符串。每个元素都是字符串才能用join方法
+
+元组其他操作都跟列表一样，因为他们都是可迭代对象。
+
+从tu中取出33
+tu = (111,"abc",(1,2),[(33,44)],)
+v = tu[3][0][0]  # v=33。 因为tu里面嵌套了一个列表，里面再嵌套一个元组
+
+tu = (111,"abc",(1,2),[(33,44)],)
+tu[3][0] = 1
+print(tu)	#(111, 'abc', (1, 2), [1])  元组中的一级元素不可修改，但元组嵌套的二级元素可以修改
+
+tu = (111,"abc",(1,2),[(33,44)],)
+tu[1][0] = "b"
+print(tu)	#报错，因为字符串不可修改。
+
+
+字典：
+
+#字典由键：键值对应组成。
+#键值value可以是任何值
+#键key不能是：列表，字典。（特殊：元组可以是键，bool值也可以是键，因为True就是1）
+#每个键key必须不一样，不能有相同的key。否则会自动省略重复的键值对
+info = {"k1":"v1",
+        1:True,
+        "k3":[11,22,33],
+		"k4":[11,[],{
+			"k1":1,
+			"k2":2,
+			"k3":3
+		}]
+        }
+print(info)	
+print(info)		#两次输出的顺序不一样。证明字典是无序的，不能用索引查找
+
+
+v = info("k1")			# v1
+v = info(1)				# True
+v = info["k4"][2]["k1"]	# 1
+
+del info["k1"]	#删除字典元素，也是通过查找键来删
+
+for item in info:
+	print(item)		#k1 1 k3 k4   遍历字典，遍历的是键key。
+
+for item in info.keys():
+	print(item)		#k1 1 k3 k4  遍历字典的key。不加.keys，默认循环的就是keys
+
+for item in info.values():	#遍历字典的键值values
+	print(item)		#[11, [], {'k1': 1, 'k2': 2, 'k3': 3}] 
+
+for k,v in info.items():	#同时遍历字典的key与value，返回值有2个，键key和键值value
+	print(k,v)
+
+类的定义中有“ @staticmethod  ”，说明这是静态方法，可以用 类名.方法 调用，而不是 对象.方法 调用
+
+v = dict.fromkeys(["key1","key2"],0) #创建字典，第一个参数为键key，第二个参数为这些key的value。
+print(v)	# {'key1': 0, 'key2': 0} 
+	
+v = dict.fromkeys(["key1","key2"],[0,1]) #第二个参数就是value，如果是列表，也把列表整体作为value，不会拆开
+print(v)	# {'key1': [0, 1], 'key2': [0, 1]}
+
+dic = {"k1"：1}			
+v = dic["k1"]		# 1
+v = dic["k111"]		# error，报错
+v = dic.get('k1')	# 1
+v = dic.get('k111')	# None,不会报错，如果键不存在，返回None
+v = dic.get('k111'，111)	#111  如果键不存在，指定默认值为111
+
+v = dic.pop('k1')	#删除key为k1的键值对，返回值为被删除的value
+v = dic.pop('k111'，9) #如果需要删除的key键值对不存在，则设置返回值为9
+
+k,v = dic.popitem()	#删除字典的一个键值对，返回被删除的key和value。因为字典无序，所以这是随机删除一对键值对。
+
+v = dic.setdefault('k111',5)#如果键k111不存在，设置键k111的value为5，并返回value为5。如果key已经有value，则返回存在的value，不重新设置键值
+
+dic = {"k1":1,
+       "k2":2,
+       }
+dic.update({"k1":111,"k3":222})	#以前有的键更新键值，以前没有的键则添加键值对
+print(dic)		#{'k1': 111, 'k2': 2, 'k3': 222} 
+
+#和上面一样更新字典，写法不同而已。这里的k1，k3，k4都是键，等号后面都是value
+#这种方式更新的键不能写成“k1”，而是写成k1，系统默认把这个键看作字符串。这里的key不能设置成数字，因为这种方式把key当作字符串，key为数字会报错。
+dic.update(k1=123,k3=234,k4="abc")		
+
+字典里用的最多的：keys(),values(),items(),get(),update()
+
+
+集合：
+1.不同元素组成
+2.无序
+3.集合中元素必须是不可变类型。（所以不能是列表，可以是字符串，元组，字典）
+
+s ={1,2,3,4,5} #字典也是大括号，但是字典里面是键值对，这里是逗号链接
+
+s ={1,2,3,3,3}
+print(s)	#{1, 2, 3} 自动去重，集合里元素都不同
+
+s ={1,2,"a","b","c"}
+print(s)	#{1, 2, 'b', 'a', 'c'}  集合是无序的，所以每次print看到的值的顺序可能不一样
+
+s = set("hello")	#set里面只要是可迭代类型都可以，因为可迭代才可拆分
+print(s)	#{'e', 'h', 'l', 'o'}	创建集合的一种方式，set会把这个字符串拆开为一个个作为集合元素，重复的只保留一个。
+
+s = set(['hello',"alex",'sp'])
+print(s)	#{'alex', 'sp', 'hello'}
+
+s = set('make')
+s = set(['hello',"alex",'sp'])
+print(s)	#{'hello', 'sp', 'alex'}  set是重新设置生成集合，如果用已经存在的集合接受，则得到这个set的集合值，以前的会清空
+
+s.add('a') #往集合中添加元素
+s.clear()	#清空集合
+s1 = s.copy()	#复制s集合给s1
+s.pop()		#删除集合中的一个元素（随机删一个，因为集合无序）
+s.remove('s')	#删除集合指定元素。如果这个值不存在则报错
+s.discard('s')	#删除集合指定元素，若不存在，不报错
+
+
+集合关系运算交，差，并集
+如果没有集合内置方法，只有这样循环找两个列表的交集
+python_1 = ['a','b']
+linux_1 = ['c','a']
+python_and_linux_1 = []
+for p_name in python_1:
+       if p_name in linux_1:
+              python_and_linux_1.append(p_name)
+print(python_and_linux_1)
+
+
+python_1 = ['a','b','a']
+p_s = set(python_1)	#{'b', 'a'}  列表转换为集合，set为集合类名。同时，由于集合不能有重复的，会自动去重
+
+#集合交集
+python_1 = ['a','b']
+linux_1 = ['c','a']
+p_s = set(python_1)
+l_s = set(linux_1)
+
+print (p_s.intersection(l_s)) #{'a'}  intersection方法是把两个集合取交集。列表不能用这个方法，所以先转换为集合
+print (p_s&l_s)    # {'a'}  这样也能求集合的交集。但是这样求列表的交集会报错。只能先转化为集合
+
+#集合求并集
+print( p_s.union( l_s ) ) #求p_s和l_s的并集，自动去掉相同的元素
+print( p_s | l_s ) #也是求并集
+
+#求并集，并把结果直接赋值给s1
+s1.update(s2)	#求并集，也可以理解为往s1添加s2的元素。效果都一样
+s1.add("a")		#也是往集合中添加元素，但是add只能添加一个，update可以直接添加多个，如：s1.update(s2,"a")
+
+
+#集合求差集（一个有，另一个没有）
+print( p_s - l_s )	#得到p_s有，l_s没有的元素
+print(l_s.difference(p_s)) #同上，l_s中有，p_s中没有的
+
+#求差集，同时直接把p_s更新为差集的结果，p_s.difference(l_s)返回结果，但两个集合本身没有变化
+p_s = p_s - l_s				
+p_s.difference_update(l_s)	#与上一行等效
+
+#交叉补集 （先求并集再减去两个都有的部分）
+print( p_s ^ l_s )	#符号法
+print( p_s.symmetric_difference(l_s) )	#内置方法实现
+
+
+
+#没有交集，返回True
+print(s1.isdisjoint(s2))
+
+#s1是s2的子集，则返回True
+print(s1.issubset(s2))
+
+#s1是s2的父集，即s2是s1的子集，则返回True
+print(s1.issuperset(s2))
+
+#set创建的集合是可变的，也是常用的。
+#还有一种特殊的集合，不可变，所以也没有添加元素删除元素的内置方法。
+s = frozenset('hello')	#创建不可变集合
+print(s)	#frozenset({'o', 'e', 'h', 'l'})
+
+#简单的列表去重办法（不在乎索引顺序）：
+names = ['a','b','c','a']
+names = list(set(names))	#利用容器set自动去重的特点。但是集合无序，所以这样会打乱顺序
+print(names)		#['c', 'b', 'a']
+
+#字符串拼接，字符串里面的%s表示插入位置，后面的%跟着的字符串是插入内容
+print('i am %s boy'%'a')	#i am a boy
+
+msg = 'i am %s boy'%'a' 
+print(msg)		# i am a boy
+
+#如果两个字符串用+链接，是拼接到后面
+#尽量少用+。因为 + 会开辟内存，效率低
+msg = 'i am %s boy'+'a'
+print(msg)		#i am %s boya
+
+#用%链接多个字符串，后面用括号
+msg = 'i %s a  %s'%('am','boy')
+print(msg)		#i am a  boy
+
+#用%s连接的不仅可以是字符串，还可以是数字，列表等等都可以
+msg = 'i %s a  %s'%('am',1)				i am a  1
+msg = 'i %s a  %s'%('am',['a','b'])		#i am a  ['a', 'b']
+
+#%d只能对应数字
+msg = 'i %s a  %d'%('am',1)	#i am a  1
+
+#%f浮点数。默认保留6位小数
+msg = 'it\'s  %f'%(11.1)	# \是转义符，让'能正常显示。
+print(msg)		#it's 11.100000
+
+msg = 'it\'s  %.2f'%(11.1)	#只保留两位小数（自动四舍五入）
+
+msg = 'it\'s %.4s'%(11.11111)#保留4位字符串。小数点也算一位
+
+msg = 'it\'s %% %.4f '%11.11111 #it's % 11.1111  用两个百分号，就能显示出来%
+
+# 前面%(name)s，后面指定"name"值，s为字符型。
+msg = 'i am %(name)s , age %(age)d'%{"name":'alex',"age":18}	#i am alex , age 18
+
+#format字符串{}，一一对应。少一个就报错
+tpl = "i am {},age {},{}".format("seven",18,'alex') #i am seven,age 18,alex   大括号和format里面的内容一一对应
+
+# {2}可以指定索引位置为2，与后面format对应
+tpl = "i am {2},age {1},{0}".format("seven",18,'alex')
+print(tpl)	#i am alex,age 18,seven
+
+#format字符串{1}，指定索引1，没有一一对应个数也不报错
+tpl = "i am {1},age {1}".format("seven",18,'alex')
+print(tpl)		#i am 18,age 18
+
+#{name}中指定key，与format中的key对应
+tpl = "i am {name},age {age}".format(name = 'alex',age = 18)
+print(tpl)		#i am alex,age 18
+
+#后面format如果要用字典形式，需要在format里面加两个*。
+tpl = "i am {name},age {age}".format(**{'name' : 'alex','age':18})
+print(tpl)		#i am alex,age 18
+
+#format中可以是列表，前面的0[1]表示第一个列表的第二个元素
+tpl = "i am {0[1]},age {0[2]}".format([1,2,3],[4,5,6])
+print(tpl)		# i am 2,age 3
+
+#{:s}表字符串类型，{:d}表整形
+tpl = "i am {:s},age {:d}".format('a',5)
+print(tpl)
+
+#format('a',5)是默认为列表['a',5]，然后对应前面的{}对应起来
+tpl = "i am {},age {}".format('a',5)	#i am a,age 5
+
+#如果自己在format写一个列表，需要加一个*号。如果传入字典，需要加**，同时用key的方式匹配。
+tpl = "i am {},age {}".format(*['a',5])
+#可以同时在{}中指定类型，s为字符串。
+tpl = "i am {:s},age {:d}".format(*['a',5])
+#可以同时在{}中指定第几个索引
+tpl = "i am {1},age {0}".format(*['a',5])	#i am 5,age a
+
+#定义列表变量。format中必须加*，不然就默认是[m]，会出错，而是m=[...]。
+m = ['a',5]
+tpl = "i am {},age {}".format(*m)
+print(tpl)
+
+# b：二进制  o：八进制  x：十六进制（转换成小写）  X：十六进制（转换成大写）  %：显示百分比
+tpl = "numbers: {:b} {:o} {:x} {:X},{:%}  " .format(15,15,15,15,15)		#numbers: 1111 17 f F,1500.000000%
+print(tpl)
+
+#函数：
+def test(x):
+    '''
+    :param x:整形数字
+    :return: 计算结果
+    '''
+    return x+3
+print(test(3))	#6
+
+#在python中，如果没有返回值，会自动返回None
+
+#在python中，可以返回多个值
+def test(x):
+    return x+3,1
+print(test(3))	#(6, 1)  返回多个值，元组形式返回
+a,b = test(1)	#多个返回值可以这样用多个变量接收
+print(a,b)		#4 1  
+
+接收返回值的时候，这种返回多个值的，接受的就是元组。这个元组包含多个值
+
+可变长参数：
+def test(x,y,z):
+    return x+y+z
+调用时，如果使用位置参数，必须一一对应，不能多或者少
+test(1,2,3)
+使用关键字参数，不用一一对应，不能多或者少
+test(y=1,x=2,z=3)
+位置参数必须在关键字参数左边
+test(1,2,z=3)
+
+
+def test(x,y=1):
+    return x+y
+a = test(1,type=2)	#3
+a = test(1,2)		#3
+a = test(1)			#2
+
+
+参数组： **字典  *列表
+加上*args，可以在调用时多传几个值过来，用不到就不管，不会报错。如果不加*args就必须匹配
+def test(x,*args):	# 把第一个参数赋值给x，其他参数以元组形式传给args
+	print(x)		# 1 
+	print(args)		#(2, 3, 4, 5)
+#	print(args[1])	# 2  取args的第一个 
+test(1,2,3,4,5)	
+#只要在*args处，使用位置参数调用，都是把这一串给args
+test(1,{'name':'egg'})	#1   ({'name': 'egg'},)
+
+test(1,[1,2,3])			#1   ([1, 2, 3],)   args[0][1]取值为2
+test(1,*[1,2,3])		#1	  (1, 2, 3)	这里也加*号，和*args对应，表示把列表里的内容直接传给args，args[1]的值为2，而不是args[0][2]
+test(1,*(1,2,3))		#1	  (1, 2, 3)	和上面一样。不管传入列表还是元组，都会默认转换为元组。因为不可变
+
+test(1,*{'name':'alex'})	#1  ('name',)  这样一个*args循环遍历的是key，没有传入value
+test(1,*{'name':'alex'},*{'age':'15'})	#1 ('name', 'age') 同上
+
+# *只能传入列表，不能用关键字方式调用
+def test(x,*args):
+	pass
+test(1,x=2,y=3)		#报错。一个*不能这样用关键字。
+
+#   **kwargs字典形式
+def test(x,**kwargs):
+    print(kwargs)
+test(1,y=2,z=3)		# {'y': 2, 'z': 3}	两个**是字典形式
+
+#x只能接收位置参数的第一个值，因为要一一对应。*args接收列表，**kwargs接收关键字（字典形式）
+def test(x,*args,**kwargs):
+    print(x)				# 1
+    print(args)				# (1, 2, 3)
+    print(kwargs)			# {'y': 2, 'z': 3}
+test(1,1,2,3,y=2,z=3,)		
+
+
+def test(x,*args,**kwargs):
+    print(x)					# 1
+    print(args)					# (1, 2, 3)
+    print(kwargs)				# {'y': 1}
+test(1,*[1,2,3],**{'y':1})
+
+
+#变量与递归
+
+#全局变量：在整个py文件中都能调用
+#局部变量：子函数中才能调用
+
+#定义时用global关键字，则是全局变量
+def test():
+    global name
+name = "abc"
+print(name)		#abc  
+
+global name = 'abc'	#报错，全局变量声明时，不可赋值初始化，因为global只是声明。
+
+
+#如果函数中调用name变量时，没加global关键字，只能读取name变量，不能对name重新赋值。
+#但对于可变类型，如列表等，可以对内部元素进行操作
+
+#global name		#这里加不加global都一样，因为这个位置直接定义产生的变量会直接对函数里面也有效
+name =[ 'abc' ]
+def test():
+    name = ['aaa']	# 认为是新建了局部变量name，而不会修改全局变量的值
+test()
+print(name)			# ['abc']
+
+name =[ 'abc' ]
+def test():
+    name.append('aaa')	# 列表是可变类型，可以对列表内容增删。但不能把列表重新赋值如name = 'a',否则会认为新建了一个局部变量
+test()
+print(name)				# [ 'abc','aaa' ]
+
+
+在函数中如果加global声明要使用某变量，就可以对这个全局变量任意修改赋值
+
+自己的规则：全局变量都大写，局部变量都小写（便于区分）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
